@@ -2,7 +2,9 @@ version: '2'
 services:
   db:
     image: postgres:13
-    container_name: postgres13
+    ports:
+      - "5014:5432"
+    container_name: odoo14_db_ce
     environment:
       - POSTGRES_PASSWORD=odoo
       - POSTGRES_USER=odoo
@@ -13,7 +15,7 @@ services:
 
   odoo14:
     image: odoo:14
-    container_name: odoo14
+    container_name: odoo14_web_ce
     depends_on:
       - db
     ports:
